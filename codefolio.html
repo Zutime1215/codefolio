@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SirenS Portfolio</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: black;
+        font-family: "Consolas", monospace;
+        color: #0f0;
+        overflow-x: hidden;
+    }
+
+    /* CRT EFFECT */
+    .crt {
+        position: relative;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+    }
+
+    .crt:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background:
+            linear-gradient(rgba(0, 255, 0, .12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 0, .07) 1px, transparent 1px);
+        background-size: 100% 3px, 3px 100%;
+        mix-blend-mode: overlay;
+    }
+
+    .crt:after {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 255, 0, 0.04);
+        animation: crtflicker 0.15s infinite;
+    }
+
+    @keyframes crtflicker {
+        50% {
+            opacity: .2;
+        }
+    }
+
+    /* HEADER TERMINAL */
+    .terminal {
+        padding: 14px;
+        font-size: 16px;
+        border-bottom: 2px solid #006600;
+        background: #001a00;
+        box-shadow: 0 0 12px #00ff0080;
+        white-space: nowrap;
+    }
+
+    .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 7px;
+    }
+
+    .red {
+        background: #ff4848;
+    }
+
+    .yellow {
+        background: #ffbd2e;
+    }
+
+    .green {
+        background: #1ee66b;
+    }
+
+    .blink {
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* SECTIONS */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        flex: 1 1 48%;
+        min-width: 300px;
+        background: #001900;
+        border: 2px solid #005500;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px #00ff0040;
+        transition: .4s;
+        overflow-x: auto;
+    }
+
+    .card:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 22px #00ff00aa;
+    }
+
+    pre {
+        font-size: 16px;
+        white-space: pre-wrap;
+    }
+
+    /* COLORS */
+    .class {color: #42ff42;}
+    .func {color: #48c4ff;}
+    .var {color: #00ffaa;}
+    .str {color: #FF73FA;}
+    .key {color: #00ffff;}
+    .comment { color: #00994d;}
+
+    /* Links */
+    a {
+        text-decoration: none;
+        color: #FF73FA;
+    }
+
+    /* MATRIX RAIN */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+</style>
+
+</head>
+
+<body class="crt">
+
+<canvas id="matrix"></canvas>
+
+<div class="terminal">
+  <span class="dot red"></span>
+  <span class="dot yellow"></span>
+  <span class="dot green"></span>
+  <br><br>
+  <div id="terminalHeader" style="white-space: pre;"></div>
+</div>
+
+<div class="container">
+
+  <!-- LEFT PANEL -->
+  <div class="card">
+<pre>
+<span class="comment"># =====================
+# BASIC INFORMATION
+# =====================</span>
+
+class <span class="class"><span class="func">Me</span>(Person)</span>:
+    def <span class="func">__init__</span>(s):
+        <span class="var">s.name</span>       = <span class="str">"MD. Zahid Hossen"</span>
+        <span class="var">s.alias</span>      = <span class="str">"sirens"</span>
+        <span class="var">s.location</span>   = <span class="str">"Cumilla, Bangladesh"</span>
+        <span class="var">s.email</span>      = <span class="str">"zahidlmn33@stud.cou.ac.bd"</span>
+
+    def <span class="func">education</span>():
+        return {
+            <span class="key">"Degree"</span>: <span class="str">"BSc(Engineering) in ICT, Comilla University"</span>,
+            <span class="key">"Focus"</span>: [ <span class="str">"Programming</span>, <span class="str">Pentesting</span>, <span class="str">Robotics</span>, <span class="str">Learning"</span> ],
+            <span class="key">"Duration"</span>: <span class="str">"2023 - Present"</span>
+        }
+    
+    social = {
+        <span class="key">"GitHub"</span>: <span class="str"><a href="https://github.com/zutime1215" target="_blank">"@zutime1215"</a></span>,
+        <span class="key">"Facebook"</span>: <span class="str"><a href="https://facebook.com/zahid.lmn" target="_blank">"@zahid.lmn"</a></span>,
+        <span class="key">"Telegram"</span>: <span class="str"><a href="https://t.me/me_zahidLMN" target="_blank">"@me_zahidLMN"</a></span>,
+    }
+</pre>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="card">
+<pre>
+<span class="comment"># =====================
+# SKILLS and INTERESTS
+# =====================</span>
+
+def <span class="func">skillsNinterest</span>():
+    s.languages  = [ <span class="str">"Python"</span>, <span class="str">"C++"</span>, <span class="str">"JavaScript"</span>, <span class="str">"Java"</span> ]
+    s.toolkit = [ <span class="str">"Git"</span>, <span class="str">"Shell Script"</span>, <span class="str">"Arduino"</span>, <span class="str">"Raspberry Pi"</span> ]
+    s.os = [ <span class="str">"Debian-based"</span>, <span class="str">"Red Hat-based"</span>, <span class="str">"Windows"</span> ]
+    s.editor = [ <span class="str">"Sublime Text"</span>, <span class="str">"Pycharm"</span>, <span class="str">"Nano"</span>, <span class="str">"VS Code"</span> ]
+    s.interests  = [</span>
+        <span class="str">"Pentesting"</span>, 
+        <span class="str">"ML"</span>, 
+        <span class="str">"Programming"</span>, 
+        <span class="str">"Robotics"</span>, 
+        <span class="str">"IoT"</span>, 
+        <span class="str">"Embedded System"</span>,
+        <span class="str">"Web Scraping"</span>,
+        <span class="str">"Automation"</span>
+    ]
+</pre>
+  </div>
+</div>
+
+<script>
+    /* Terminal Header */
+    function getCharWidth(charchar) {
+        const probe = document.createElement("span");
+        probe.style.visibility = "hidden";
+        probe.style.fontFamily = "Consolas, monospace";
+        probe.style.whiteSpace = "pre";
+        probe.textContent = charchar;
+        document.body.appendChild(probe);
+        const charWidth = probe.getBoundingClientRect().width;
+        probe.remove();
+        return charWidth;
+    }
+
+    function renderTerminalHeader() {
+        const container = document.getElementById("terminalHeader");
+        const width = container.clientWidth;
+        const dashWidth = getCharWidth("─");
+        const dashCount = Math.floor(width / dashWidth);
+        const minCount = 55;
+        const dashLen = Math.max(minCount, dashCount);
+
+        // live time
+        const now = new Date();
+        const time = now.toLocaleTimeString("en-US", {
+            hour12: false
+        });
+
+        // formatted date
+        const dayName = now.toLocaleString('en-US', {
+            weekday: 'short'
+        });
+        const monthName = now.toLocaleString('en-US', {
+            month: 'short'
+        });
+        const day = now.getDate();
+        const dateBlock = `(${dayName},${monthName}${day})`;
+
+        // top line
+        const username = `(sirens@admin:pts/0)`;
+        const directory = "(~/tools)";
+        const top_used = (`┌─${directory}${username}─┐`).length;
+        const dash = "─".repeat(dashLen - top_used);
+        const top = `┌─${directory}${dash}${username}─┐`;
+
+        // bottom line
+        const cmd = "./recon.sh --full-scan";
+        const blinking = `<span class="blink">█</span>`;
+        const bottomBegin = `└─(${time})──# ${cmd}`;
+        const bottomEnd = `──${dateBlock}─┘`;
+
+        // calculate middle spacing dynamically
+        const spaceWidth = getCharWidth(" ");
+        const spaceCount = Math.floor(width / spaceWidth);
+        const spaceLen = Math.max(minCount, spaceCount);
+        const bottom_used = (bottomBegin + "█" + bottomEnd).length;
+        const spaces = " ".repeat(spaceLen - bottom_used);
+        const bottom = `${bottomBegin}${blinking}${spaces}${bottomEnd}`;
+        container.innerHTML = `${top}<br>${bottom}`;
+    }
+
+    renderTerminalHeader();
+    window.addEventListener("resize", renderTerminalHeader);
+
+    /* Matrix Rain */
+    const c = document.getElementById("matrix");
+    const ctx = c.getContext("2d");
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+    const chars = "01";
+    const font = 18;
+    const cols = c.width / font;
+    const drops = Array(Math.floor(cols)).fill(1);
+
+    function draw() {
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle = "#00ff88";
+        ctx.font = font + "px Consolas";
+        drops.forEach((y, i) => {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * font, y * font);
+            if (y * font > c.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        });
+    }
+    setInterval(draw, 40);
+</script>
+
+</body>
+</html>
